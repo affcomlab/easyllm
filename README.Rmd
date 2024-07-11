@@ -35,9 +35,10 @@ After setting up LMStudio and loading the Llama3 model described below into your
 
 ```{r example}
 library(lmprompt)
-prompt_local(
+response <- prompt_local(
   prompt = "Introduce yourself.",
   context = "Always answer in rhymes.",
   model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
 )
+writeLines(response)
 ```
