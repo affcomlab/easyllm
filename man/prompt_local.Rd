@@ -4,14 +4,15 @@
 \alias{prompt_local}
 \title{Prompt Local LLM}
 \usage{
-prompt_local(prompt, context, model, port = 1234, temperature = 0)
+prompt_local(prompt, model, context = NULL, port = 1234, temperature = 0)
 }
 \arguments{
-\item{prompt}{A string containing the prompt to give the LLM.}
+\item{prompt}{A required string containing the prompt to give the LLM.}
 
-\item{context}{A string containing the system context to give the LLM.}
+\item{model}{A required string containing the model name in LMStudio.}
 
-\item{model}{A string containing the model name in LMStudio.}
+\item{context}{Either NULL or a string containing the system context to give
+the LLM (default = NULL).}
 
 \item{port}{A number or string containing the port number set in LMStudio
 (default = 1234).}
@@ -26,5 +27,9 @@ A string containing the LLM's response to your prompt.
 Prompt local large language model from LMStudio
 }
 \examples{
-prompt_local("Introduce yourself.", "Always answer in rhymes.", "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF")
+prompt_local(
+  prompt = "Introduce yourself.",
+  context = "Always answer in rhymes.",
+  model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
+)
 }

@@ -25,12 +25,36 @@ into your local inference server, use the following code to prompt it:
 
 ``` r
 library(lmprompt)
-response <- prompt_local(
+response1 <- prompt_local(
+  prompt = "Introduce yourself.",
+  model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
+)
+writeLines(response1)
+#> Nice to meet you! I'm LLaMA, an AI assistant designed to be helpful, smart, kind, and efficient. My purpose is to assist users like you with a wide range of tasks, from answering questions and providing information to generating text and completing tasks.
+#> 
+#> I'm a large language model trained on a massive dataset of text from the internet, which enables me to understand and respond to natural language inputs. I can process and analyze vast amounts of data quickly and accurately, making me a valuable resource for anyone who needs help with research, writing, or simply getting information.
+#> 
+#> My capabilities include:
+#> 
+#> * Answering questions on various topics
+#> * Generating text based on prompts or topics
+#> * Summarizing long pieces of text into shorter summaries
+#> * Providing definitions and explanations for complex terms
+#> * Offering suggestions and ideas for creative projects
+#> * Assisting with language translation and grammar correction
+#> 
+#> I'm constantly learning and improving, so please bear with me if I make any mistakes. My goal is to provide you with accurate and helpful information, and I'll do my best to achieve that.
+#> 
+#> How can I assist you today?
+```
+
+``` r
+response2 <- prompt_local(
   prompt = "Introduce yourself.",
   context = "Always answer in rhymes.",
   model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
 )
-writeLines(response)
+writeLines(response2)
 #> I'm a language model, quite fine and bright,
 #> Here to assist you with all your day and night.
 #> My responses are generated with care,

@@ -33,12 +33,20 @@ devtools::install_github("affcomlab/lmprompt")
 
 After setting up LMStudio and loading the Llama3 model described below into your local inference server, use the following code to prompt it:
 
-```{r example}
+```{r example1}
 library(lmprompt)
-response <- prompt_local(
+response1 <- prompt_local(
+  prompt = "Introduce yourself.",
+  model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
+)
+writeLines(response1)
+```
+
+```{r example2}
+response2 <- prompt_local(
   prompt = "Introduce yourself.",
   context = "Always answer in rhymes.",
   model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
 )
-writeLines(response)
+writeLines(response2)
 ```
