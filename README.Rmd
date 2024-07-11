@@ -1,0 +1,43 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# lmprompt
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of lmprompt is to provide easy access to LLMs from R.
+
+## Installation
+
+You can install the development version of lmprompt from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("affcomlab/lmprompt")
+```
+
+## Example
+
+After setting up LMStudio and loading the Llama3 model described below into your local inference server, use the following code to prompt it:
+
+```{r example}
+library(lmprompt)
+prompt_local(
+  prompt = "Introduce yourself.",
+  context = "Always answer in rhymes.",
+  model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
+)
+```
