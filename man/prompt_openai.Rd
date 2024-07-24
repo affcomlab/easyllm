@@ -9,13 +9,13 @@ prompt_openai(prompt, model, context, key, temperature = 0)
 \arguments{
 \item{prompt}{A required string containing the prompt to give the LLM.}
 
-\item{model}{A required string containing the model name in LMStudio.}
+\item{model}{A required string containing the model name in OpenAI's API.}
 
 \item{context}{Either NULL or a string containing the system context to give
 the LLM (default = NULL).}
 
-\item{key}{A string containing your API key. See \code{save_key()} and
-`load_key() for related convenience functions.}
+\item{key}{A required string containing your API key. See \code{save_key()} and
+\code{load_key()} for related convenience functions.}
 
 \item{temperature}{A number representing how random vs. deterministic the
 output is. Set to 0 to always get the same response.}

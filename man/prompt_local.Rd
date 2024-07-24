@@ -30,6 +30,6 @@ Prompt local large language model from LMStudio
 prompt_local(
   prompt = "Introduce yourself.",
   context = "Always answer in rhymes.",
-  model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
+  model = "lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF"
 )
 }

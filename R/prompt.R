@@ -16,7 +16,7 @@
 #' prompt_local(
 #'   prompt = "Introduce yourself.",
 #'   context = "Always answer in rhymes.",
-#'   model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
+#'   model = "lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF"
 #' )
 prompt_local <- function(prompt, model, context = NULL, port = 1234, temperature = 0) {
 
@@ -112,11 +112,11 @@ load_key <- function(keyname = "key") {
 #' Prompt local large language model from OpenAI using API.
 #'
 #' @param prompt A required string containing the prompt to give the LLM.
-#' @param model A required string containing the model name in LMStudio.
+#' @param model A required string containing the model name in OpenAI's API.
 #' @param context Either NULL or a string containing the system context to give
 #'   the LLM (default = NULL).
-#' @param key A string containing your API key. See `save_key()` and
-#'   `load_key() for related convenience functions.
+#' @param key A required string containing your API key. See `save_key()` and
+#'   `load_key()` for related convenience functions.
 #' @param temperature A number representing how random vs. deterministic the
 #'   output is. Set to 0 to always get the same response.
 #' @return A string containing the LLM's response to your prompt.
