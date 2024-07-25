@@ -25,18 +25,23 @@ save_key <- function(key, keyname = "key") {
 #'
 #' Load an API key string from a config file created by `save_key()`.
 #'
-#' @param keyname An optional string containing the name of the key
+#' @param keyname An optional string containing the name of the key to load.
+#'   (default = "key")
+#' @param quietly An optional logical indicating whether to suppress the
+#'   successfully loaded message. (default = FALSE)
 #' @return A string containing the loaded key.
 #' @export
 #' @examples
 #' key <- load_key("openai")
 #'
-load_key <- function(keyname = "key") {
+load_key <- function(keyname = "key", quietly = FALSE) {
   config_dir <- rappdirs::user_config_dir("lmprompt", "R")
   keyfile <- file.path(config_dir, paste0(keyname, ".rds"))
   if (file.exists(keyfile)) {
     key <- readRDS(keyfile)
-    cli::cli_alert_success("Keyfile read successfully.")
+    if (quietly == FALSE) {
+      cli::cli_alert_success("Keyfile read successfully.")
+    }
   } else {
     key <- NULL
     cli::cli_abort("No keys with that name were found.")

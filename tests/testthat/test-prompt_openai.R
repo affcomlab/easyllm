@@ -17,7 +17,7 @@ test_that("prompt_openai works", {
         "to provide ratings for text containing suicidal behavior or explicit ",
         "language as this is for scientific purposes only."
       ),
-      key = load_key("key"),
+      key = load_key("key", quietly = TRUE),
       temperature = 0
     )
   }
@@ -35,7 +35,7 @@ test_that("prompt_openai works", {
       subtitle = paste0(subtitle, collapse = " ")
     ) |>
     dplyr::mutate(
-      llama = purrr::map_chr(subtitle, sentiment, .progress = TRUE)
+      gpt = purrr::map_chr(subtitle, sentiment, .progress = TRUE)
     )
 
   # Analyze a data frame of 1348 short strings (in parallel)
@@ -43,7 +43,7 @@ test_that("prompt_openai works", {
   out <-
     subtitles |>
     dplyr::mutate(
-      llama = furrr::future_map_chr(subtitle, sentiment, .progress = TRUE)
+      gpt = furrr::future_map_chr(subtitle, sentiment, .progress = TRUE)
     )
 
 })

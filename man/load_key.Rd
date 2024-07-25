@@ -4,10 +4,14 @@
 \alias{load_key}
 \title{Load an API key}
 \usage{
-load_key(keyname = "key")
+load_key(keyname = "key", quietly = FALSE)
 }
 \arguments{
-\item{keyname}{An optional string containing the name of the key}
+\item{keyname}{An optional string containing the name of the key to load.
+(default = "key")}
+
+\item{quietly}{An optional logical indicating whether to suppress the
+successfully loaded message. (default = FALSE)}
 }
 \value{
 A string containing the loaded key.
