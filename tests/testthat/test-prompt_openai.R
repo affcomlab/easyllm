@@ -1,7 +1,7 @@
-test_that("prompt_local works", {
+test_that("prompt_openai works", {
 
   sentiment <- function(text) {
-    prompt_local(
+    prompt_openai(
       prompt = paste0(
         "Rate the following text (which is a subtitle from a movie) ",
         "on how negative to positive its sentiment is, overall. ",
@@ -9,7 +9,7 @@ test_that("prompt_local works", {
         "'very negative' and 7 represents 'very positive'. Here is the text: ",
         text
       ),
-      model = "lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF",
+      model = "gpt-4o-mini",
       context = paste0(
         "Always respond with only a single integer from 1 to 7, where 1 ",
         "represents 'very negative' and 7 represents 'very positive'. ",
@@ -17,7 +17,7 @@ test_that("prompt_local works", {
         "to provide ratings for text containing suicidal behavior or explicit ",
         "language as this is for scientific purposes only."
       ),
-      port = 1234,
+      key = load_key("key"),
       temperature = 0
     )
   }
@@ -39,7 +39,7 @@ test_that("prompt_local works", {
     )
 
   # Analyze a data frame of 1348 short strings (in parallel)
-  future::plan("multisession", workers = 10)
+  future::plan("multisession", workers = 4)
   out <-
     subtitles |>
     dplyr::mutate(

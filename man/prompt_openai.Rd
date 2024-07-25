@@ -29,7 +29,7 @@ Prompt local large language model from OpenAI using API.
 \examples{
 prompt_openai(
   prompt = "Introduce yourself.",
-  model = "gpt-3.5-turbo-0125"
+  model = "gpt-4o-mini",
   context = "Always answer in rhymes.",
   key = load_key()
 )
