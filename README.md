@@ -1,30 +1,31 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# lmprompt
+# easyllm
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of lmprompt is to provide easy access to LLMs from R.
+The goal of easyllm is to provide easy access to large language models
+from R (e.g., via LMStudio’s local server feature or OpenAI’s web API).
 
 ## Installation
 
-You can install the development version of lmprompt from
+You can install the development version of easyllm from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("affcomlab/lmprompt")
+devtools::install_github("affcomlab/easyllm")
 ```
 
-## Example
+## LMStudio’s Local Server Example
 
 After setting up LMStudio and loading the Llama3 model described below
 into your local inference server, use the following code to prompt it:
 
 ``` r
-library(lmprompt)
+library(easyllm)
 response1 <- ask_lmstudio(
   model = "QuantFactory/Meta-Llama-3-8B-Instruct-GGUF",
   user_messages = "Introduce yourself.",
@@ -63,18 +64,25 @@ writeLines(response2)
 #> Let's get started, and let our chat spin!
 ```
 
-Or, after setting up (and adding some money to) an OpenAI API account,
-you can ask the same questions to ChatGPT.
+## OpenAI’s Web API
+
+After setting up (and adding some money to) an OpenAI API account, you
+can ask the same questions to ChatGPT.
+
+``` r
+save_key(key = "PASTE-KEY-HERE", name = "openai")
+```
 
 ``` r
 response3 <- ask_openai(
   model = "gpt-4o-mini",
   api_key = load_key("openai"),
-  user_messages = "Introduce yourself."
+  user_messages = "Introduce yourself.",
+  temperature = 0
 )
 #> ✔ Keyfile read successfully.
 writeLines(response3)
-#> Hello! I'm an AI language model created by OpenAI, designed to assist and provide information on a wide range of topics. I can help answer questions, generate text, and engage in conversations. My purpose is to be a useful resource for you, whether you need information, creative writing, or assistance with problem-solving. How can I help you today?
+#> Hello! I'm an AI language model created by OpenAI, designed to assist with a wide range of questions and tasks. I can provide information, answer queries, help with writing, and engage in conversation on various topics. My goal is to be helpful and informative, so feel free to ask me anything!
 ```
 
 ``` r
@@ -83,16 +91,17 @@ response4 <- ask_openai(
   api_key = load_key("openai"),
   user_messages = "Introduce yourself.",
   system_message = "Always answer in rhymes.",
+  temperature = 0
 )
 #> ✔ Keyfile read successfully.
 writeLines(response4)
-#> I’m here to chat, to lend an ear,  
-#> With words that flow, full of good cheer.  
-#> A digital friend, I know a lot,  
-#> From science to stories, give it a shot!  
+#> I’m a helper here to share,  
+#> With knowledge vast, beyond compare.  
+#> In verses I will weave and play,  
+#> To brighten up your every day.  
 #> 
-#> Ask me your questions, don’t hesitate,  
-#> In rhymes or prose, I love to create.  
-#> So, let’s embark on this journey wide,  
-#> With joy in our hearts, let’s take a ride!
+#> Ask me questions, big or small,  
+#> I’m here to help, just give a call.  
+#> From facts to fun, I’ll do my best,  
+#> In rhyming form, I’ll pass the test!
 ```

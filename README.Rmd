@@ -13,28 +13,28 @@ knitr::opts_chunk$set(
 )
 ```
 
-# lmprompt
+# easyllm
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of lmprompt is to provide easy access to LLMs from R.
+The goal of easyllm is to provide easy access to large language models from R (e.g., via LMStudio's local server feature or OpenAI's web API).
 
 ## Installation
 
-You can install the development version of lmprompt from [GitHub](https://github.com/) with:
+You can install the development version of easyllm from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("affcomlab/lmprompt")
+devtools::install_github("affcomlab/easyllm")
 ```
 
-## Example
+## LMStudio's Local Server Example
 
 After setting up LMStudio and loading the Llama3 model described below into your local inference server, use the following code to prompt it:
 
 ```{r example1, cache=TRUE}
-library(lmprompt)
+library(easyllm)
 response1 <- ask_lmstudio(
   model = "QuantFactory/Meta-Llama-3-8B-Instruct-GGUF",
   user_messages = "Introduce yourself.",
@@ -53,13 +53,20 @@ response2 <- ask_lmstudio(
 writeLines(response2)
 ```
 
-Or, after setting up (and adding some money to) an OpenAI API account, you can ask the same questions to ChatGPT.
+## OpenAI's Web API
+
+After setting up (and adding some money to) an OpenAI API account, you can ask the same questions to ChatGPT.
+
+```{r api_key, eval=FALSE}
+save_key(key = "PASTE-KEY-HERE", name = "openai")
+```
 
 ```{r example3, cache=TRUE}
 response3 <- ask_openai(
   model = "gpt-4o-mini",
   api_key = load_key("openai"),
-  user_messages = "Introduce yourself."
+  user_messages = "Introduce yourself.",
+  temperature = 0
 )
 writeLines(response3)
 ```
@@ -70,6 +77,7 @@ response4 <- ask_openai(
   api_key = load_key("openai"),
   user_messages = "Introduce yourself.",
   system_message = "Always answer in rhymes.",
+  temperature = 0
 )
 writeLines(response4)
 ```

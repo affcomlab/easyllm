@@ -1,10 +1,10 @@
-Package: lmprompt
+Package: easyllm
 Title: Convenience Functions for Prompting Large Language Models
-Version: 0.0.0.9000
+Version: 0.0.1.9000
 Authors@R: 
     person("Jeffrey", "Girard", , "me@jmgirard.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7359-3746"))
-Description: Asks questions of large language models (e.g., via OpenAI API or local LMStudio) and capture their output, all from R.
+Description: Ask questions of large language models (e.g., via OpenAI API or local LMStudio) and capture their output, all from R.
 License: CC BY 4.0
 Imports: 
     cli,
