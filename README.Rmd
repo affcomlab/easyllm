@@ -33,20 +33,43 @@ devtools::install_github("affcomlab/lmprompt")
 
 After setting up LMStudio and loading the Llama3 model described below into your local inference server, use the following code to prompt it:
 
-```{r example1}
+```{r example1, cache=TRUE}
 library(lmprompt)
-response1 <- prompt_local(
-  prompt = "Introduce yourself.",
-  model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
+response1 <- ask_lmstudio(
+  model = "QuantFactory/Meta-Llama-3-8B-Instruct-GGUF",
+  user_messages = "Introduce yourself.",
+  temperature = 0
 )
 writeLines(response1)
 ```
 
-```{r example2}
-response2 <- prompt_local(
-  prompt = "Introduce yourself.",
-  context = "Always answer in rhymes.",
-  model = "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
+```{r example2, cache=TRUE}
+response2 <- ask_lmstudio(
+  model = "QuantFactory/Meta-Llama-3-8B-Instruct-GGUF",
+  user_messages = "Introduce yourself.",
+  system_message = "Always answer in rhymes.",
+  temperature = 0
 )
 writeLines(response2)
+```
+
+Or, after setting up (and adding some money to) an OpenAI API account, you can ask the same questions to ChatGPT.
+
+```{r example3, cache=TRUE}
+response3 <- ask_openai(
+  model = "gpt-4o-mini",
+  api_key = load_key("openai"),
+  user_messages = "Introduce yourself."
+)
+writeLines(response3)
+```
+
+```{r example4, cache=TRUE}
+response4 <- ask_openai(
+  model = "gpt-4o-mini",
+  api_key = load_key("openai"),
+  user_messages = "Introduce yourself.",
+  system_message = "Always answer in rhymes.",
+)
+writeLines(response4)
 ```
