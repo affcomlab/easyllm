@@ -64,7 +64,7 @@ writeLines(response2)
 #> Let's get started, and let our chat spin!
 ```
 
-## OpenAI’s Web API
+## OpenAI’s Web API Example
 
 After setting up (and adding some money to) an OpenAI API account, you
 can ask the same questions to ChatGPT.

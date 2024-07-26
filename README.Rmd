@@ -53,7 +53,7 @@ response2 <- ask_lmstudio(
 writeLines(response2)
 ```
 
-## OpenAI's Web API
+## OpenAI's Web API Example
 
 After setting up (and adding some money to) an OpenAI API account, you can ask the same questions to ChatGPT.
 
